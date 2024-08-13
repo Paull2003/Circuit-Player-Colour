@@ -1,9 +1,9 @@
 {
-    "name": "Dynamic-Engineer-Colour",
-    "version": "0.1.0",
-    "title": "Circuit_Player_Colour",
-    "author": "Mind_ev3",
-    "factorio_version": "1.1",
-    "dependencies": ["base >= 1.1.0"],
-    "description": "Change the colour of the player depending on a circuit condition."
+"name": "Circuit-Player-Colour",
+"version": "0.1.0",
+"title": "Circuit-Player-Colour",
+"author": "Mind_ev3",
+"factorio_version": "1.1",
+"dependencies": ["base >= 1.1.0"],
+"description": "Change the colour of the player depending on a circuit condition."
 }
