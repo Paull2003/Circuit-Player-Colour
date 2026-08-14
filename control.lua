@@ -93,24 +93,42 @@ script.on_event(defines.events.on_tick, function(event)
                 local entity = storage[player.index]["entity"]
                 if entity.valid then
                     if storage[player.index]["network"] == "red" then
-                        red = entity.get_signal({ type = "virtual", name = "signal-red" },
-                            defines.wire_connector_id.circuit_red)
-                        green = entity.get_signal({ type = "virtual", name = "signal-green" },
-                            defines.wire_connector_id.circuit_red)
-                        blue = entity.get_signal({ type = "virtual", name = "signal-blue" },
-                            defines.wire_connector_id.circuit_red)
+                        if entity.name == "constant-combinator" then
+                            red = entity.get_signal({ type = "virtual", name = "signal-red" },
+                                defines.wire_connector_id.circuit_red)
+                            green = entity.get_signal({ type = "virtual", name = "signal-green" },
+                                defines.wire_connector_id.circuit_red)
+                            blue = entity.get_signal({ type = "virtual", name = "signal-blue" },
+                                defines.wire_connector_id.circuit_red)
+                        else
+                            red = entity.get_signal({ type = "virtual", name = "signal-red" },
+                                defines.wire_connector_id.combinator_output_red)
+                            green = entity.get_signal({ type = "virtual", name = "signal-green" },
+                                defines.wire_connector_id.combinator_output_red)
+                            blue = entity.get_signal({ type = "virtual", name = "signal-blue" },
+                                defines.wire_connector_id.combinator_output_red)
+                        end
                         red = math.min(255, math.max(red, 0))
                         green = math.min(255, math.max(green, 0))
                         blue = math.min(255, math.max(blue, 0))
                         local color = { r = red, g = green, b = blue, a = 128 }
                         player.color = color
                     elseif storage[player.index]["network"] == "green" then
-                        red = entity.get_signal({ type = "virtual", name = "signal-red" },
-                            defines.wire_connector_id.circuit_green)
-                        green = entity.get_signal({ type = "virtual", name = "signal-green" },
-                            defines.wire_connector_id.circuit_green)
-                        blue = entity.get_signal({ type = "virtual", name = "signal-blue" },
-                            defines.wire_connector_id.circuit_green)
+                        if entity.name == "constant-combinator" then
+                            red = entity.get_signal({ type = "virtual", name = "signal-red" },
+                                defines.wire_connector_id.circuit_green)
+                            green = entity.get_signal({ type = "virtual", name = "signal-green" },
+                                defines.wire_connector_id.circuit_green)
+                            blue = entity.get_signal({ type = "virtual", name = "signal-blue" },
+                                defines.wire_connector_id.circuit_green)
+                        else
+                            red = entity.get_signal({ type = "virtual", name = "signal-red" },
+                                defines.wire_connector_id.combinator_output_green)
+                            green = entity.get_signal({ type = "virtual", name = "signal-green" },
+                                defines.wire_connector_id.combinator_output_green)
+                            blue = entity.get_signal({ type = "virtual", name = "signal-blue" },
+                                defines.wire_connector_id.combinator_output_green)
+                        end
                         red = math.min(255, math.max(red, 0))
                         green = math.min(255, math.max(green, 0))
                         blue = math.min(255, math.max(blue, 0))
@@ -121,6 +139,6 @@ script.on_event(defines.events.on_tick, function(event)
                     storage[player.index]["entity"] = nil
                 end
             end
-        end
+        end 
     end
 end)
